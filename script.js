@@ -88,3 +88,6 @@ btnHold.addEventListener("click", function () {
         }
     }
 });
+
+// New game button event listener
+btnNew.addEventListener("click", init);
