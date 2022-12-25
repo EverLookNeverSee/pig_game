@@ -67,3 +67,24 @@ btnRoll.addEventListener("click", function () {
     }
 });
 
+// Hold button event listener
+btnHold.addEventListener("click", function () {
+    if (playing) {
+        // 1.Add current score to active player's score
+        totalScores[activePlayer] += currentScore;
+        document.getElementById(`score--${activePlayer}`).textContent =
+            String(totalScores[activePlayer]);
+        // 2.Check if player's score is >= 100 and finish the game
+        if (totalScores[activePlayer] >= 100) {
+            playing = false;
+            diceEl.classList.add("hidden");
+            document.querySelector(`.player--${activePlayer}`).
+            classList.add("player--winner");
+            document.querySelector(`.player--${activePlayer}`).
+            classList.add("player--active");
+        } else {
+            // 3.Switch to the next player
+            switchPlayer();
+        }
+    }
+});
